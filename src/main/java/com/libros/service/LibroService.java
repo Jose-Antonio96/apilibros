@@ -10,6 +10,4 @@ public interface LibroService {
 	void altaLibro(Libro libro);
 	void actualizarLibro(Libro libro);
 	List<Libro> eliminarLibro(int isbn);
-
-
 }

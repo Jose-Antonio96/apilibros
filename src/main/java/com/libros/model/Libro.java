@@ -6,14 +6,11 @@ import jakarta.persistence.*;
 @Table(name = "libros")
 public class Libro {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int isbn;
     private String titulo;
     private String autor;
     private int precio;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categorias_nombre", referencedColumnName = "nombre") 
-    private Categoria categoria;
 
     public Libro() {
         super();
@@ -60,13 +57,9 @@ public class Libro {
         this.precio = precio;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+    
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
+    
 
     
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.libros.model.Libro;
 import com.libros.service.LibroService;
@@ -27,12 +28,12 @@ public class LibrosController {
     }
 
     @PostMapping(value="libro", consumes=MediaType.APPLICATION_JSON_VALUE)
-    public void guardar(Libro Libro){
-        service.altaLibro(Libro);
+    public void guardar(@RequestBody Libro libro){
+        service.altaLibro(libro);
     }
 
     @PutMapping(value="libro", consumes=MediaType.APPLICATION_JSON_VALUE)
-    public void actualizar(Libro Libro){
+    public void actualizar(@RequestBody Libro Libro){
         service.actualizarLibro(Libro);
     }
 
@@ -42,7 +43,7 @@ public class LibrosController {
     }
 
     @GetMapping(value="libro/{isbn}", produces=MediaType.APPLICATION_JSON_VALUE)
-    public Libro buscar(int isbn){
+    public Libro buscar(@PathVariable("isbn") int isbn){
         return service.buscarLibro(isbn);
     }
 }
